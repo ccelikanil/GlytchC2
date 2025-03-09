@@ -1,2 +1,2 @@
-# ShadyC2
-The real Shady
+# Glytch C2
+####FAFO

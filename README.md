@@ -2,4 +2,4 @@
 
 *FAFO*
 
-<p align="center"> <img src="rsc/GlytchC2_Banner.png" /> </p>                                                                                                                
+<p align="center"> <img src="rsc/GlytchC2_Banner.PNG" /> </p>                                                                                                                

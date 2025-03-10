@@ -2,7 +2,7 @@
 
 <p align="center"> <img src="rsc/GlytchC2_Banner.PNG" /> </p>
 
-# A FAFO project: Data exfiltration of any kind over live streaming platforms
+# A FAFO project: Data exfiltration of any kind through live streaming platforms
 
 -
 

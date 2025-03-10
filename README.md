@@ -15,8 +15,8 @@
 -
 
 ## Main Execution Flow 
-
--
+<p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>
+<p align="center"> Figure - Main Execution Flow </p>
 
 ## Module 
 

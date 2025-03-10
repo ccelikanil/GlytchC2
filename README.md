@@ -22,6 +22,6 @@
 
 -
 
-## What's next? & Current Roeadmap for this project
+## What's next? & Current Roadmap for this project
 
 -

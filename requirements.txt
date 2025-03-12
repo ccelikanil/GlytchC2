@@ -1,0 +1,7 @@
+Pillow
+emoji
+python-decouple
+
+# The following are external dependencies:
+# - ffmpeg: Ensure ffmpeg is installed and available in your system PATH.
+#   (Libx264 codec is used for video encoding.)

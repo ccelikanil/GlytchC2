@@ -28,6 +28,10 @@ Currently, **"GlytchC2"** offers two functionalities:
 - Command execution on remote host
 - Retrieve file from remote host
 
+## Main Execution Flow 
+<p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>
+<p align="center"> Figure - Main Execution Flow </p>
+
 ## Proof-of-Concepts (PoCs) & How it works
 
 ### Proof-of-Concepts (PoCs)
@@ -223,10 +227,6 @@ Fragmentation:
 - If the input file is too large to fit in one image (given the grid cell size), it is split into multiple fragments. Each fragment’s header contains its index and the total number of fragments. This way, the decoder can reconstruct the file by concatenating the payloads in order.
 
 #
-
-## Main Execution Flow 
-<p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>
-<p align="center"> Figure - Main Execution Flow </p>
 
 ## What's next? & Current Roadmap for this project
 

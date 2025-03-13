@@ -28,6 +28,8 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ## Proof-of-Concepts (PoCs) & How it works
 
+### Proof-of-Concepts (PoCs)
+
 - As this tool can be used on post-exploitation, you need a working shell on the target environment and have necessary permissions/privileges.
 - When you execute ``victim.py`` on the target host, host gets connected to the IRC chat of given channel by using provided "oauth" key in the ``.env`` file. You can execute ``victim.py`` with following command:
 
@@ -105,6 +107,14 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 <p align="center"> <img src="rsc/victim_cleanup.PNG" /> </p>
 <p align="center"> Figure - Stream Ending & Cleanup (Victim) </p>
+
+- Finally, transferred file (note that the SHA256 hash is same with victim's local file; indicating that the file has been transferred with 100% integrity):
+<p align="center"> <img src="rsc/attacker_output2.png" /> </p>
+<p align="center"> Figure - Transferred File (Attacker) </p>
+
+### How it works?
+
+
 
 ## Main Execution Flow 
 <p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>

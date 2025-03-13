@@ -33,6 +33,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 ### Proof-of-Concepts (PoCs)
 
 - As this tool can be used on post-exploitation, you need a working shell on the target environment and have necessary permissions/privileges.
+- Run ``victim.py`` first and then run ``attacker.py``
 - When you execute ``victim.py`` on the target host, host gets connected to the IRC chat of given channel by using provided "oauth" key in the ``.env`` file. You can execute ``victim.py`` with following command:
 
 ```

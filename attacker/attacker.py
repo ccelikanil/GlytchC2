@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Developed by Anıl Çelik (@ccelikanil) and Emre Odaman (@eodaman), usage of this tool is restricted to educational purposes only. Developers do not take any responsibility and do not accept accusation of any misuse. 
+# Developed by Anıl Çelik (@ccelikanil) and Emre Odaman (@eodaman), the use of this tool is restricted to educational purposes only. The developers do not assume any responsibility and do not accept any accusations in the event of misuse.
 
 import argparse
 import base64

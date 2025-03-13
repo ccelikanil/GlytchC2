@@ -4,7 +4,7 @@
 
 # A FAFO project: Command execution and data exfiltration of any kind through live streaming platforms
 
-This tool has been developed by **Anıl ÇELİK** [LinkedIn](https://linkedin.com/in/anilcelik97) , [GitHub](https://github.com/ccelikanil) and **Emre ODAMAN** [LinkedIn](https://linkedin.com/in/emreodaman) , [GitHub](https://github.com/eodaman) 
+This tool has been developed by **Anıl ÇELİK** ( [LinkedIn](https://linkedin.com/in/anilcelik97) , [GitHub](https://github.com/ccelikanil) ) and **Emre ODAMAN** ( [LinkedIn](https://linkedin.com/in/emreodaman) , [GitHub](https://github.com/eodaman) )
 
 Glytch is a post-exploitation tool serving as a Command-and-Control (C2) & Data Exfiltration service. 
 

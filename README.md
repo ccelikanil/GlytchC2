@@ -116,7 +116,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ### How it works?
 
-#### Encoder Script (encoder.py)**
+#### Encoder Script (encoder.py)
 
 #### Purpose
 

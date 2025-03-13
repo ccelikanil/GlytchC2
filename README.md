@@ -114,7 +114,112 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ### How it works?
 
+#### Encoder Script (encoder.py)**
 
+#### Purpose
+
+The encoder reads an input file (either raw binary or a hex string), splits it into fragments (if necessary), and converts each fragment into a PNG image. In that image, both metadata (a header) and the payload are “drawn” by mapping small units of data (nibbles) into corresponding 8‑bit grayscale pixel values. The reason for choosing grayscale is to avoid corruption caused by chroma subsampling. Each pixel is encoded as six repeating nibbles (4-bits/1 HEX char). Therefore, every byte is encoded into 2 pixels, minimum. The header includes essential information (e.g. payload length, grid dimensions, fragment index/total, border thickness, expected overall dimensions, and the file name).
+
+#### Key Concepts & Methods
+
+**Constants and Header Structure**
+
+Constants: 
+- ``DEFAULT_BORDER``, ``HEADER_HEIGHT``, ``MARKER_COLOR``, and ``MIN_CELL`` are defined to set dimensions and ensure the markers and header are drawn with reliable parameters.
+
+Header Structure:
+- The header is 279 bytes long (21 fixed bytes plus 258 extra bytes for file name—2 for the length and 256 for the actual name).
+
+It contains:
+- 4 bytes: Payload length (number of data bytes for this fragment).
+- 2 bytes: Number of grid columns for the payload.
+- 2 bytes: Number of grid rows for the payload.
+- 4 bytes: Fragment index (useful when data is split across multiple images).
+- 4 bytes: Total fragments.
+- 1 byte: Border thickness (dummy field, ensuring that marker values don’t conflict with data values).
+- 2 bytes: Expected overall image width.
+- 2 bytes: Expected overall image height.
+- 2 bytes: File name length.
+- 256 bytes: File name (UTF‑8 encoded, padded or truncated to fit).
+
+**Mapping Data to Grayscale**
+
+Nibble Mapping:
+- Each nibble (4 bits, with a value 0–15) is mapped to an 8‑bit grayscale value by multiplying by 17 (i.e. 0→0, 1→17, …, 15→255). This uniform spacing prevents ambiguities during decoding.
+
+Header Conversion:
+- The header bytes are split into nibbles. Each nibble is then drawn into a “cell” in the header region of the image. The header is placed at the top of the safe data region.
+
+Payload Conversion:
+- The payload (fragment data) is similarly converted: every byte is split into two nibbles and then placed into the grid below the header.
+
+**Image Construction**
+
+Outer Border and Markers:
+- A new grayscale image is created. The function draw_nested_frames() draws “photo-frame” style borders in the outer border area using a fixed grayscale value (based on the nibble value
+- The function draw_marker_lines() draws a one‑pixel thick marker rim along the safe area boundaries. These markers help the decoder to locate the actual data region.
+
+Grid Determination:
+- The safe area (inside the border) is divided into a header region (of fixed height) and a payload grid. The grid’s dimensions (columns and rows) are calculated based on the safe region size and a minimum cell size.
+
+Fragmentation Logic:
+- The maximum payload per image is computed from the number of available grid cells (each cell stores one nibble; two nibbles form one byte).
+- If the file’s data exceeds the capacity of one image, the file is split into fragments, and each fragment is encoded separately.
+
+Saving the Output:
+- Finally, the constructed image is saved as a PNG file. Informational messages are printed to detail the image dimensions, safe region, grid configuration, and payload size.
+
+#
+
+#### Decoder Script (decoder.py)
+
+#### Purpose
+
+The decoder takes one or more PNG images (which are fragments produced by the encoder) and reconstructs the original file. It does so by locating the safe (data) region, reading the header to learn the grid and payload configuration, and then reading the payload grid (by converting grayscale values back into nibbles, and then reassembling bytes).
+
+**Key Concepts & Methods**
+
+Matching Constants:
+
+- The decoder uses exactly the same constants as the encoder (for header size, marker color, and so on). This is crucial because the header and payload layout must match exactly for the data to be recovered correctly.
+
+Marker Detection:
+``find_marker_edges()``: 
+- Scans the image near its edges (within a “search window”) to detect marker lines.
+- It checks rows and columns to see if a high percentage of pixels match the marker color ``MARKER_COLOR``, then returns the boundaries (top, bottom, left, right) of the safe region.
+- If marker detection fails, a fallback using expected overall dimensions is used.
+
+Header Extraction:
+``extract_header()``:
+- Reads the header region from the safe area by dividing the header region into cells. For each cell, the central pixel’s grayscale value is converted back into a nibble (by dividing by 17).
+- Nibbles are combined (two at a time) to reconstruct the original header bytes.
+- The header is parsed to extract metadata (payload length, grid dimensions, fragment index/total, border thickness, expected overall dimensions, and the file name).
+
+Payload Decoding:
+- The remainder of the safe region (below the header) is divided into grid cells.
+- For each cell, the center pixel’s value is converted back into a nibble. These nibbles are then reassembled into bytes (two nibbles per byte) to reconstruct the payload.
+
+Reassembly of Fragments:
+- If multiple PNG fragments exist, the decoder collects them (verifying their headers) and concatenates their payload bytes in the proper order to rebuild the complete file.
+- The file name is recovered from the header and used when saving the reconstructed data.
+
+#
+
+#### Overall Logic
+
+Why Use a Grid and Nibble Conversion?
+- By mapping 4‑bit nibbles to fixed 8‑bit grayscale values (multiples of 17), the system ensures that each cell in the image represents a specific, unambiguous piece of data. This coarse encoding is robust against small variations, making it easier to decode even if the image is resized or slightly distorted.
+
+Header Inclusion:
+- The header carries all metadata required for decoding—this means the decoder knows exactly how to interpret the grid (number of columns, rows, fragment indices, etc.) and can verify that the correct file is being reassembled.
+
+Marker Lines:
+- The use of marker lines (drawn along the safe region boundary) gives the decoder a reliable reference to the boundaries of the data region. This is important because the image might have extra borders or frames, and the decoder must know where the actual data begins and ends.
+
+Fragmentation:
+- If the input file is too large to fit in one image (given the grid cell size), it is split into multiple fragments. Each fragment’s header contains its index and the total number of fragments. This way, the decoder can reconstruct the file by concatenating the payloads in order.
+
+#
 
 ## Main Execution Flow 
 <p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>

@@ -225,17 +225,13 @@ Fragmentation:
 <p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>
 <p align="center"> Figure - Main Execution Flow </p>
 
-While main execution flow of this program is provided in below flowchart, we’d like to explain the features in brief:
-
-- Attacker inputs a Twitch channel name in order to establish an IRC connection with victim.
-- Victim is in passive mode on the IRC connection and is in  waiting mode for a ping from another peer (namely, the attacker).
-- Attacker sends an arbitrary command via IRC and waits for a "READY" message from the victim to see the communication channel is ready.
--
-
-## Module 
-
--
-
 ## What's next? & Current Roadmap for this project
 
--
+- Youtube, Instagram and other widely used major streaming platforms support
+- Utilization of audio to increase data transfer rate 
+- More functionalities - e.g. bi-directional data transfer
+
+## Credit
+
+- [Twitch Chat IRC - Xenova GitHub](https://github.com/xenova/twitch-chat-irc/)
+- Special thanks to: [Contributor: Istemihan Bulut](https://github.com/istemihanbulut)

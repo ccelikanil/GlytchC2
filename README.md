@@ -35,6 +35,8 @@ Currently, **"GlytchC2"** offers two functionalities:
 # cd victim
 # python3 victim.py --channel <CHANNEL_NAME> --streamkey <RTMP_KEY>
 ```
+<p align="center"> Code Block - Running "victim.py" </p>
+
 - Then, victim waits for receiving a request containing either an OS command or a file with it's path:
 
 <p align="center"> <img src="rsc/victim_initialexec.png" /> </p>
@@ -46,6 +48,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 # cd attacker
 # python3 attacker.py --channel <CHANNEL_NAME>
 ```
+<p align="center"> Code Block - Running "attacker.py" </p>
 
 <p align="center"> <img src="rsc/attacker_initialexec.PNG" /> </p>
 <p align="center"> Figure - Running "attacker.py" </p>

@@ -15,7 +15,7 @@ from twitch_chat_irc import TwitchChatIRC  # provided IRC module
 
 # --- Constants ---
 OK_TIMEOUT = 30       # seconds to wait for "OK"
-READY_TIMEOUT = 60    # seconds to wait for "READY"
+READY_TIMEOUT = 600    # seconds to wait for "READY"
 CRAWLER_SCRIPT = "crawler.py"
 DECODER_SCRIPT = "decoder.py"
 RETRY_DELAY = 1       # seconds to wait before retrying crawler

@@ -34,6 +34,10 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ## Proof-of-Concepts (PoCs) & How it works
 
+### PoC Video
+
+[![GlytchC2 PoC](rsc/yt_banner.PNG)](https://youtu.be/FzUCudF7iUo)
+
 ### Proof-of-Concepts (PoCs)
 
 - As this tool can be used on post-exploitation, you need a working shell on the target environment and have necessary permissions/privileges.

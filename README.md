@@ -1,6 +1,6 @@
 # Glytch Command-and-Control (C2) Tool
 
-<p align="center"> <img src="rsc/GlytchC2_Banner.PNG" /> </p>
+<p align="center"> <img src="rsc/GlytchC2_newbanner.png" /> </p>
 
 # A FAFO project: Command execution and data exfiltration of any kind through live streaming platforms
 

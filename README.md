@@ -36,7 +36,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ### PoC Video
 
-[![GlytchC2 PoC](rsc/yt_banner.PNG)](https://youtu.be/69HJH92Swx0)
+[![GlytchC2 PoC](rsc/GlytchC2_Banner.PNG)](https://youtu.be/69HJH92Swx0)
 <p align="center"> Video 1 - PoC </p>
 
 ### Installation of dependencies

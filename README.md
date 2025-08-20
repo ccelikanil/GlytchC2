@@ -1,5 +1,7 @@
 # Glytch Command-and-Control (C2) Tool
 
+![DEFCON 33 Red Team Village](https://img.shields.io/badge/DEFCON%2033%20Red%20Team%20Village-8A2BE2) ![DEFCON 33 Demo Labs](https://img.shields.io/badge/DEFCON%2033%20Demo%20Labs-8A2BE2)
+
 <p align="center"> <img src="rsc/GlytchC2_newbanner.png" /> </p>
 
 # A FAFO project: Command execution and data exfiltration of any kind through live streaming platforms

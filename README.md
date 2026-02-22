@@ -36,6 +36,10 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ## Proof-of-Concept (PoC) & How it works
 
+### RTV Overflow 2026 Presentation Video
+
+[GlytchC2 @ RTVOverflow2026](https://www.youtube.com/live/r6rZ1QggZSo?t=7506s)
+
 ### PoC Video
 
 [![GlytchC2 PoC](rsc/GlytchC2_Banner.PNG)](https://youtu.be/69HJH92Swx0)

@@ -38,7 +38,7 @@ Currently, **"GlytchC2"** offers two functionalities:
 
 ### RTV Overflow 2026 Presentation Video
 
-[GlytchC2 @ RTVOverflow2026](https://www.youtube.com/live/r6rZ1QggZSo?t=7506s)
+[GlytchC2 @ RTVOverflow2026](https://www.youtube.com/watch?v=I2c5ogdVlV8)
 
 ### PoC Video
 
